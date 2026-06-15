@@ -1,353 +1,479 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio Website</title>
-    <link rel="stylesheet" href="">
+    <title>Portfolio – Ayesha Ramzan</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
 
+        html,
+        body {
+            width: 100%;
+            overflow-x: hidden;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            background: pink;
+            color: rgb(79, 32, 114);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* ── NAVBAR ── */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 28px 40px;
+        }
+
+        .logo {
+            font-size: clamp(1.8rem, 5vw, 3rem);
+            color: rgb(102, 12, 147);
+            font-weight: bold;
+        }
+
+        .navbar ul {
+            display: flex;
+            gap: 12px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar ul li button {
+            padding: 10px 26px;
+            border-radius: 8px;
+            border: 2px solid rgb(102, 12, 147);
+            background: white;
+            cursor: pointer;
+            font-size: clamp(0.85rem, 1.5vw, 1rem);
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            color: rgb(79, 32, 114);
+            transition: background 0.3s;
+            height: auto;
+            width: auto;
+            margin: 0;
+        }
+
+        .navbar ul li button:hover {
+            background-color: rgb(255, 174, 187);
+        }
+
+        .navbar ul li button:hover a {
+            color: rgb(95, 161, 44);
+        }
+
+        /* ── HERO SECTION ── */
+        .hero {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 48px;
+            padding: 60px 40px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .pic {
+            width: 260px;
+            height: 260px;
+            object-fit: cover;
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            transition: box-shadow 0.3s;
+            flex-shrink: 0;
+        }
+
+        .pic:hover {
+            box-shadow: 0 8px 24px rgba(82, 48, 48, 0.7);
+        }
+
+        .intro-text {
+            max-width: 560px;
+        }
+
+        .intro-text h1 {
+            font-size: clamp(1.2rem, 2.5vw, 1.7rem);
+            color: rgb(79, 32, 114);
+            margin: 6px 0;
+            line-height: 1.4;
+        }
+
+        .intro-text p {
+            font-size: clamp(0.85rem, 1.4vw, 0.98rem);
+            color: rgb(79, 32, 114);
+            line-height: 1.9;
+            margin-top: 14px;
+        }
+
+        /* ── SOCIAL ICONS ── */
+        .icon {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .icon img {
+            width: 34px;
+            height: 34px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .icon img:hover {
+            transform: scale(1.18);
+        }
+
+        /* ── CV LINK ── */
+        .footer {
+            margin-top: 18px;
+        }
+
+        .footer p {
+            font-size: 0.95rem;
+            color: green;
+            margin: 0;
+        }
+
+        .cv-a {
+            text-decoration: underline;
+            color: green;
+        }
+
+        .cv-a:hover {
+            color: orange;
+        }
+
+        /* ── ABOUT SECTION ── */
+        .about {
+            position: relative;
+            max-width: 1000px;
+            margin: 70px auto;
+            padding: 60px 48px;
+            overflow: hidden;
+        }
+
+        /* Mint rectangle behind About */
+        .about::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, #d9fff3, #f0fffb);
+            
+            border-radius: 28px;
+            z-index: -1;
+        }
+
+        .about h1 {
+            font-size: clamp(1.4rem, 3vw, 2rem);
+            margin-bottom: 8px;
+        }
+
+        /* inner layout: image left, content right */
+        .about-inner {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            align-items: flex-start;
+            margin-top: 30px;
+        }
+
+        .pic2 {
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+            flex-shrink: 0;
+        }
+
+        .about-content {
+            flex: 1;
+            min-width: 220px;
+        }
+
+        .about-content p {
+            font-size: clamp(0.85rem, 1.4vw, 0.97rem);
+            line-height: 1.9;
+            margin: 0 0 28px;
+        }
+
+        /* ── STATS ── */
+        .stats {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 28px;
+            justify-content: flex-start;
+            margin-bottom: 28px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-item h1 {
+            font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+            margin: 0;
+        }
+
+        .stat-item h2 {
+            font-size: clamp(0.75rem, 1.3vw, 0.9rem);
+            font-weight: normal;
+            margin: 4px 0 0;
+        }
+
+        /* ── LANGUAGES ── */
+        .languages {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .languages button {
+            padding: 8px 18px;
+            font-size: 0.88rem;
+            border-radius: 8px;
+            border: 2px solid rgb(79, 32, 114);
+            background: white;
+            color: rgb(79, 32, 114);
+            cursor: pointer;
+            font-family: Verdana, sans-serif;
+            transition: background 0.3s, color 0.3s;
+            height: auto;
+            width: auto;
+            margin: 0;
+        }
+
+        .languages button:hover {
+            background-color: rgb(79, 32, 114);
+            color: white;
+        }
+
+        /* ── CONTACT SECTION ── */
+        .contact {
+            text-align: center;
+            padding: 70px 20px 80px;
+        }
+
+        .contact h1 {
+            font-size: clamp(1.6rem, 4vw, 2.5rem);
+            margin-bottom: 8px;
+        }
+
+        .contact-text {
+            font-size: clamp(0.88rem, 1.5vw, 1rem);
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        .contact-cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 28px;
+            margin-top: 36px;
+        }
+
+        .contact-card {
+            background: #fff;
+            width: 240px;
+            padding: 32px 20px;
+            border-radius: 16px;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s, transform 0.3s;
+        }
+
+        .contact-card:hover {
+            box-shadow: 0 8px 22px rgba(255, 174, 187, 0.7);
+            transform: translateY(-4px);
+        }
+
+        .contact-card i {
+            font-size: 2rem;
+            color: #ff6fa3;
+            margin-bottom: 10px;
+        }
+
+        .contact-card h3 {
+            font-size: 1.1rem;
+            margin: 8px 0 6px;
+            color: rgb(79, 32, 114);
+        }
+
+        .contact-card p {
+            font-size: 0.88rem;
+            color: #555;
+            margin: 0;
+            word-break: break-word;
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 640px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding: 40px 20px;
+            }
+
+            .icon {
+                justify-content: center;
+            }
+
+            .about {
+                padding: 40px 20px;
+                margin: 40px 16px;
+            }
+
+            .about-inner {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .stats {
+                justify-content: center;
+            }
+
+            .languages {
+                justify-content: center;
+            }
+        }
+    </style>
 </head>
-<style>
-  body {
-  height: auto;  
-  margin: 0;
-  padding: 0;
-  font-family: Arial, sans-serif;
-  background: pink;
-  }
- a {
-    text-decoration: none;
-  }
 
-  /* NAVBAR-CSS */
-.logo {
-  font-size: 200px;
-  color: rgb(102, 12, 147);
-  text-decoration: none;
-  margin-top: 70px;
-  margin-left: 2350px;
-  display: flex;
-  align-items: center;
-  padding-top: 50px;
-  text-align: center;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-
-  
-}
-.navbar ul {
- display: flex;
- 
-}
-.navbar ul li{
- list-style: none;}
- 
-/* NAVBAR-BUTTON */
-button {
-    height: 200px;
-    width: 1750px;
-    border-radius: 0px;
-    margin-bottom: 10px;
-    cursor: pointer;
-    font-size: 80px; 
-    margin-top: 90px;
-   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  
-}
-button:hover {
-   background-color: rgb(255, 174, 187);
-    transition: .8s;
-   
-    }
-    button:hover a{
-      color: rgb(95, 161, 44);
-
-    }
-h1 {
-  color: rgb(79, 32, 114);
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-size: 100px;
-
-
-}
- p{
-  color: rgb(79, 32, 114);
-  font-size: 70px;
-  
-}
-/* PROFILE-PIC */
-.pic{
-  margin-top: 300px;
-  border-radius: 90px;
-  transition: 0.3s;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.5);
-  margin-left: 1200px;
-
-}
-.pic:hover{
-  box-shadow: 0 8px 20px rgba(82, 48, 48, 0.959);
-
-}
-.intro-text{
-  margin-left: 2200px;
-  margin-top: -950px;
-}
-.intro-text p{
-  width: 2500px;
-}
-/* ABOUT-ME */
-.about{
-  margin-top: 180px;
-  margin-left: 500px;
-}
-.about p{
-  margin-left: 1700px;
-  margin-top: -900px;
-  width: 2500px;
- 
-}
-.pic2{
-  height: 1000px;
-  width: 1000px;
-  border-radius: 5000px;
-  margin-top: 200px;
-  transition: 0.3s;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.5);
-  margin-left: 400px;
-
-}
-.stats{
-  display: flex;              
-  justify-content: flex-end;   
-  gap: 600px;                  
-  align-items: center; 
-  margin-right: 1300px; 
-  margin-top: 180px;
-  
-}
-.main{
-  display: flex;              
-  justify-content: flex-end;   
-  gap: 200px;                  
-  align-items: center; 
-  margin-right: 900px; 
-  font-size: 46px;
-  color: rgb(79, 32, 114);
-  margin-top: -90px;
-
-
-}
-
-.footer{
-  font-size: 60px;
- 
-}
-/* CV */
-.cv-a{
-  text-decoration: underline;
-}
-.cv-a:hover{
-  color: orange;
-}
-/* ICONS */
-.icon {
-  display: flex;              
-  justify-content: flex-end;   
-  gap: 50px;                  
-  align-items: center;  
-  margin-right: 2780px; 
-  margin-top: 100px;   
-}
-
-.icon img {
-  width: 100px;                 
-  height: 80px;
-  cursor: pointer; 
-         
-  
-}
-
-.languages button{
-  height: 100px;
-  width: 400px;
-  font-size: 60px;
-  gap: 20px;
-  margin-left: 30px;
-  color:rgb(79, 32, 114) ;
-}
-.languages button:hover{
-  background-color: rgb(79, 32, 114);
-  color: white;
-}
-
-/* CONTACT */
-  .contact {
-    text-align: center;
-    padding: 60px 20px;
-}
-
-.contact h1 {
-  margin-top: 400px;
-    font-size: 130px;
-    letter-spacing: 1px;
-}
-
-.contact-text {
-    font-size: 70px;
-    color: #555;
-    margin-bottom: 30px;
-}
-
-.contact-cards {
-    display: flex;
-    justify-content: center;
-    gap: 90px;
-}
-
-.contact-card {
-    background: #fff;
-    margin-top: 90px;
-    width: 800px;
-    height: 500px;
-    padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
-    transition: 0.3s;
-    margin-bottom: 200px;
-}
-.contact-card:hover{
-   box-shadow: 0 8px 20px rgba(255, 208, 208, 0.959);
-
-
-}
-
-.contact-card i {
-  margin-top: 40px;
-    font-size: 80px;
-    margin-bottom: 10px;
-    color: #ff6fa3;
-}
-
-.contact-card h3 {
- 
-    font-size: 90px;
-    margin-bottom: 5px;
-}
-
-.contact-card p {
-    font-size: 53px;
-    color: #555;
-}
-
-
-</style>
 <body>
 
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <a href="#" class="logo">Portfolio</a>
+        <ul>
+            <li><button><a href="index.html">About me</a></button></li>
+            <li><button><a href="projects.html">Projects</a></button></li>
+            <li><button><a href="#contact">Contacts</a></button></li>
+        </ul>
+    </nav>
 
-   <nav class="navbar">
-    <a href="#" class="logo">Portfolio</a>
-    <ul>
-      <li><button><a href="index.html" target="_blank">About me</a></button></li>
-      <li><button><a href="projects.html" target="_blank">Projects</a></button></li>
-      <li><button><a href="index.html" target="_blank">Contacts</a></button></li>
-    </ul>
-  </nav>
-  
-      <!-- INTRO-SECTION -->
-  <img class="pic" src="pics/pic.jpeg" alt="my image">
-  
-  <div class="intro-text">
-  <h1 style="font-size: 90px;">I'm Ayesha Ramzan 👋</h1>
-  <h1 style="font-size: 100px;" >Tech Enthusiast | Builder | Explorer</h1>
-
-  <p>
-    🌷 I am a BSCS student passionate about technology, creativity, and building meaningful digital experiences. I love learning new skills, solving problems, and improving my work step by step. My portfolio reflects my journey as a learner, coder, and future developer. 🌷
-</p>
-
-<div class="icon">
-       <a href="https://pk.linkedin.com/company/kinnaird-college-for-women"><img src="pics/linkedin.png" alt="linkedin" target="_blank"></a>
-       <a href="https://www.instagram.com/kinnairdofficial/"><img src="pics/ins.png" alt="instagram" target="_blank"></a>
-       <a href="https://www.youtube.com/@kinnairdofficial"> <img src="pics/yt.png" alt="youtube"target="_blank"></a>
+    <!-- HERO / INTRO -->
+    <section class="hero">
+        <img class="pic" src="pics/pic.jpeg" alt="Ayesha Ramzan">
+        <div class="intro-text">
+            <h1>I'm Ayesha Ramzan 👋</h1>
+            <h1>Tech Enthusiast | Builder | Explorer</h1>
+            <p>
+                🌷 I am a BSCS student passionate about technology, creativity, and building
+                meaningful digital experiences. I love learning new skills, solving problems,
+                and improving my work step by step. My portfolio reflects my journey as a
+                learner, coder, and future developer. 🌷
+            </p>
+            <div class="icon">
+                <a href="https://pk.linkedin.com/company/kinnaird-college-for-women" target="_blank">
+                    <img src="pics/linkedin.png" alt="LinkedIn">
+                </a>
+                <a href="https://www.instagram.com/kinnairdofficial/" target="_blank">
+                    <img src="pics/ins.png" alt="Instagram">
+                </a>
+                <a href="https://www.youtube.com/@kinnairdofficial" target="_blank">
+                    <img src="pics/yt.png" alt="YouTube">
+                </a>
+            </div>
+            <div class="footer">
+                <p><b>Click <a class="cv-a" href="cv.pdf" target="_blank">here</a> to download my CV.</b></p>
+            </div>
         </div>
+    </section>
 
-         <main class="footer">
-       <b><p style="color: green;">Click <a class="cv-a" href="cv.pdf"  target="_blank">here</a> to download my CV. </a></p> </b>
-         </main>
-
-</div>
-
-
- <!-- About Section -->
+    <!-- ABOUT -->
     <section class="about" id="about">
-        <h1>About Me</h1><hr>
-        <img class="pic2" src="pics/download (4).jpeg" alt="my image">
-        <p>A passionate CS student and aspiring developer with a love for coding, problem-solving, 
-          and creativity. I enjoy building projects that combine technology with design, exploring 
-          new tools, and continuously learning to improve my skills. I believe in turning ideas 
-          into real solutions.<br><br>When I’m not coding, you’ll find me exploring programming, collecting 
-          memories, or experimenting with small projects to enhance my skills.</p>
+        <h1>About Me</h1>
+        <hr>
+        <div class="about-inner">
+            <img class="pic2" src="pics/download (4).jpeg" alt="About Ayesha">
+            <div class="about-content">
+                <p>
+                    A passionate CS student and aspiring developer with a love for coding,
+                    problem-solving, and creativity. I enjoy building projects that combine
+                    technology with design, exploring new tools, and continuously learning
+                    to improve my skills. I believe in turning ideas into real solutions.
+                    <br><br>
+                    When I'm not coding, you'll find me exploring programming, collecting
+                    memories, or experimenting with small projects to enhance my skills.
+                </p>
 
-     
+                <div class="stats">
+                    <div class="stat-item">
+                        <h1>03+</h1>
+                        <h2>Years of Experience</h2>
+                    </div>
+                    <div class="stat-item">
+                        <h1>05+</h1>
+                        <h2>Projects Completed</h2>
+                    </div>
+                    <div class="stat-item">
+                        <h1>03+</h1>
+                        <h2>Languages Known</h2>
+                    </div>
+                </div>
 
-        
-<div class="stats">
-  <h1>03+</h1>
-  <h1>05+</h1>
-  <h1>03+</h1>
-
-</div>
- <div class="main">
-   <h2>Years of Experience</h2>
-   <h2>Projects Completed</h2> 
-   <h2>Languages Known</h2>  
-   </div>  
-
-        <!-- Languages -->
-<div style="margin-left: 1650px;" class="languages">
-   <button style="width: 500px; height: 100px;">🗣️Languages:</button>
-    <button>English </button>
-    <button>Urdu</button>
-    <button>Spanish</button>
-</div></section>
-
-         <!-- Contact -->
-
-<section class="contact">
-    <h1>Contact Me</h1><hr>
-    <p class="contact-text">Feel free to reach out anytime 💌</p>
-
-    <div class="contact-cards">
-
-        <div class="contact-card">
-            <i class="fa-solid fa-phone"></i>
-            <h3>Phone</h3>
-            <p><a href="tel:+923094876767">+92 309 4876767</a>
+                <div class="languages">
+                    <button>🗣️ Languages:</button>
+                    <button>English</button>
+                    <button>Urdu</button>
+                    <button>Spanish</button>
+                </div>
+            </div>
         </div>
+    </section>
 
-        <div class="contact-card">
-            <i class="fa-solid fa-envelope"></i>
-            <h3>Email</h3>
-            <p><a href="mailto:ayesharamzan889@gmail.com">ayesharamzan889.com</a>
+    <!-- CONTACT -->
+    <section class="contact" id="contact">
+        <h1>Contact Me</h1>
+        <hr>
+        <p class="contact-text">Feel free to reach out anytime 💌</p>
+        <div class="contact-cards">
+
+            <div class="contact-card">
+                <i class="fa-solid fa-phone"></i>
+                <h3>Phone</h3>
+                <p><a href="tel:+923094876767">+92 309 4876767</a></p>
+            </div>
+
+            <div class="contact-card">
+                <i class="fa-solid fa-envelope"></i>
+                <h3>Email</h3>
+                <p><a href="mailto:ayesharamzan889@gmail.com">ayesharamzan889@gmail.com</a></p>
+            </div>
+
+            <div class="contact-card">
+                <i class="fa-brands fa-github"></i>
+                <h3>Instagram</h3>
+                <p><a href="https://github.com/techbyayesha" target="_blank">techbyayesha</a></p>
+            </div>
+
         </div>
+    </section>
 
-        <div class="contact-card">
-            <i class="fa-brands fa-instagram"></i>
-            <h3>Instagram</h3>
-            <p><a href="https://instagram.com/ayesha.ov" target="_blank">ayesha.ov</a></p>
-
-        </div>
-
-    </div>
-</section>
-
-        
-       
-       
-       
-     
-
-       
-
-  
 </body>
+
 </html>
